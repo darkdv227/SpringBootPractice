@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.re.kitri.hello.dao.UserDao">
+    <select id="selectAllUsers"
+            resultType="kr.re.kitri.hello.model.User">
+
+        SELECT
+                 user_id        as id
+                ,user_name      as name
+                ,user_type      as type
+        FROM
+                USERS
+        ORDER BY
+               user_id asc
+    </select>
+
+    <select id="selectUserByUserId"
+            parameterType="String"
+            resultType="kr.re.kitri.hello.model.User">
+
+        select
+            user_id    as userId
+            ,name       as name
+            ,age        as age
+        from
+            user
+        where
+            user_id = #{userId}
+    </select>
+
+</mapper>
